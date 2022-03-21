@@ -1,0 +1,5 @@
+[
+    {"name" : "eliza-bot", "type" : "chat-bot", "active":"true"},
+    {"name" : "corona-bot", "type" : "chat-bot", "active": "true"},
+    {"name" : "rot-13", "type": "encryption", "active": "false"}
+]

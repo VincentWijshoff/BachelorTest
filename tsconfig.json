@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "module": "CommonJS",
+        "target": "ESNext",
+        "lib": ["ESNext"],
+        "outDir": "dist",
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": true,
+        "listEmittedFiles": true,
+        "resolveJsonModule": true
+    },
+    "include": ["src"]
+}

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="style.css">
+    <title>CS PenO</title>
+</head>
+
+<body id='body' style="background-image: url('./background.jpg');">
+    <include src="./BackgroundMusic/"></include>
+    <audio loop src="./BackgroundMusic/LoginMusic.mp3" autoplay id="audio"></audio>
+    <table id="generalTable">
+        <tr>
+            <td><div id='mainGrid'></div></td>
+            <td id="settings" class="sideBar"></td>
+        </tr>
+    </table>
+    
+    <div  id="loginform">
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <div class="center">
+            <h3>Enter credentials to start a Client</h3>
+            <h4 hidden=true id='wrongKeys' class='wrongKeys'>You gave wrong keys, please try again!</h4>
+            <div>
+                <input type="file" id = "priv_key" hidden="hidden" />
+                <input type="file" id = "pub_key" hidden="hidden" />
+                <table>
+                    <tr>
+                        <td><label for="nname" ><b>Nickname:</b></label></td>
+                        <td style="width: 80%;"><input type="text" placeholder="Enter Nickname" id="nickname" ><br/></td>
+                        <td><button type="button" id="pubbtn" class="keysBTN">Public Key</button></td>
+                        <td><button type="button" id="privbtn" class="keysBTN">Private Key</button></td>
+                    </tr>
+                </table>
+                
+            </div>             
+            <button type="submit" id="loginbtn" class="startBTN">Login</button>
+        </div>
+    </div>
+
+
+    <!-- Modals for games -->
+
+    <div id="rock-paper-scissors" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="text-align: center;">
+            <h2 style="text-align: left;">Rock-paper-scissors</h2>
+            <span id="closeRPS" class="close">&times;</span>
+
+            <br><br>
+            <p style="text-align:left;">
+                Computer's side
+                <span style="float:right;">
+                    Your side
+                </span>
+            </p>
+            <br><br>
+            
+            <img id="leftImg" src="games/rock-paper-scissors/cloud.jpg" width="250"
+            style="position:absolute;left:200px" class="RPS_image">
+            <img id="rightImg" src="games/rock-paper-scissors/cloud.jpg" width="250"
+            style="position:absolute;transform: scaleX(-1);right:200px"class="RPS_image">
+            <h1 id="RPSinfo" style="text-align: center;"> Play! </h1>
+
+            <br><br><br><br><br><br>
+            <button id="RPS_Play_again" type="button" class="choice_button"
+            style="max-width: 500px;margin:0 auto;display:none;">Play again</button>
+            <br>
+            
+            <button id="rock" type="button" class="choice_button">Rock</button>
+            <button id="paper" type="button" class="choice_button">Paper</button>
+            <button id="scissors" type="button" class="choice_button">Scissors</button>
+        </div>
+      
+    </div>
+
+
+    <div id="TicTacToeStart" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="text-align: center; display: grid">
+            <h2 style="text-align: left;">Tic-tac-toe</h2>
+            <span id="closeTTTStart" class="close">&times;</span>
+            
+            <h3 id="TTTinfo"> Choose your opponent! </h3>
+            <br>
+            <p id="listPool">Available clients:</p>
+            <br>
+
+            <input type="text" placeholder="hash:nick or hash of an available client" id="inputHashnick" ><br/>
+            <br>
+            <button id="TTTbtnA" type="button" class="choice_button"
+            style="max-width: 500px;margin:0 auto;display:block;">Play against computer</button>
+        
+            <br>
+            <button id="TTTbtnB" type="button" class="choice_button"
+            style="max-width: 500px;margin:0 auto;display:block;">Engage another client</button>
+            <br>
+        </div>
+      
+    </div>
+
+
+    <div id="TicTacToe" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="text-align: center;">
+            <h2 style="text-align: left;">Tic-tac-toe</h2>
+            <span id="closeTTT" class="close">&times;</span>
+            <h3 id="TTTopponentInfo"></h3>
+            <div class="grid-container">
+                <button id = "11" class="TTTbutton">X</button>
+                <button id = "12" class="TTTbutton">O</button>
+                <button id = "13" class="TTTbutton"></button>
+                <button id = "21" class="TTTbutton"></button>
+                <button id = "22" class="TTTbutton"></button>
+                <button id = "23" class="TTTbutton"></button>
+                <button id = "31" class="TTTbutton"></button>
+                <button id = "32" class="TTTbutton"></button>
+                <button id = "33" class="TTTbutton"></button>
+            </div>
+
+            <br>
+            <h3 id="TTTgameInfo" style="text-align: center;"></h3>
+            <br>
+            <button id="TTTbtnInGame" type="button" class="choice_button"
+            style="max-width: 500px;margin:0 auto;display:none;">Play again</button>
+            
+        </div>
+      
+    </div>
+
+
+    <!--FAQ-->
+    <div id="faq" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="text-align: center;">
+            <h2 style="text-align: left;">FAQ</h2>
+            <span id="closefaq" class="close">&times;</span>
+
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What can I do?</h3>
+            <p>This is a browser based chat application. You can run around, visit worlds, chat with other people and play games. Enjoy your stay!</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">How do I move?</h3>
+            <p>Good question! You can move around using the arrow keys on your keyboard. If nothing happens, try clicking the world to focus and try again. If the problem is still there, try reloading your page.</p>
+
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">How do I move faster?</h3>
+            <p>Glad you asked! You can modify your speed by clicking on the 'speed dial' button on the right hand side of your screen. There are 3 speed settings available:</p>
+                            <p>- slow (blue dial) moves you one tile per click.     </p>
+                            <p>- medium (yellow dial) moves you two tiles per click.</p>
+                            <p>- fast (red dial) moves you three tiles per click.   </p>
+            <p>The speed cyles, so by clicking the button multiple times you return to the slow speed again.</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">How do I send a message?</h3>
+            <p>At the bottom of your screen there is a big inputbox. By making sure the command is set on 'message', you can type your message and press ENTER. Your message will be send to everyone in the same world. Beware you can only send messages in a world and NOT in the lobby!</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">How can I see messages?</h3>
+            <p>When someone sends a message, the messagebox will appear for a few seconds. If you want to see this again, press 't' on your keyboard. If you want to close the messagebox, you can press 'esc'.</p>
+            <br><br>
+
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What does the 'message' command do?</h3>
+            <p>This will send a message to everyone in the same world as you.</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What does the 'whisper' command do?</h3>
+            <p>This will send a message to everyone in the same world that is close to you. The range of possible recipients is configurable. It's also possible to exclude certain clients by typing '/ostracize annoying_client'. For a complete description, type help using the 'whisper' command.</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What does the 'play-game' command do?</h3>
+            <p>This will start a game. For more info about the different games, type help (using the 'play-game' command).</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What does the 'set history' command do?</h3>
+            <p>This requires a number as input. This will make sure that the amount of messages in your messagebox is set to the given number.</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What does the 'password' command do?</h3>
+            <p>If you encounter a 'password' command, that means that the world you are trying to join is set to private. Which means that you need a password to enter. If you don't know the password u are screwed and will be returned to lobby!</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What does the 'request admin' command do?</h3>
+            <p>If you encounter a 'request admin' command, that means that the world you are joined to can be set to private. By entering a password in the inputbox (using the 'request admin' command) you become the admin of the world and everyone that want to try to enter the world will need this password. If an admin leaves, the world becomes public again.</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">How do I join a world?</h3>
+            <p>Glad you made it to the lobby! If you want to join a world, you can move to a tile representing the different worlds. You can also click those tiles to join a world. If you are in a world, you can use the bridges to go to nearby worlds (or return to lobby).</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">How do I play a game?</h3>
+            <p>Use the 'play game' command. This will start a game. For more info about the different games, type help (using the 'play-game' command).</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What happens if I die?</h3>
+            <p>I hope you won't need this information. But if you die in a world, everyone in that world will receive a message that you died.</p>
+            <p>You will see a different screen where you have 2 buttons. One will bring you back to your current world you died in.</p>
+            <p>The other one will bring you back to the lobby.</p>
+            <br><br>
+
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What do the coins do?</h3>
+            <p>Try to collect as much coins as possible, they might give you some extra benefits! :)</p>
+            <p>Take a look at the achievement setting and try to figure out how it works.</p>
+            <br><br>
+            
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">How do I turn off the music?</h3>
+            <p>You shouldn't! But if you insist, you can press the sound button on the right hand side of your screen.</p>
+            <br><br>
+
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">How do I make a world private?</h3>
+            <p>See the 'What does the 'request admin' command do?' question for more info. :)</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">Which worlds can I make private?</h3>
+            <p>Caveworld!</p>
+            <br><br>
+
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">What does bot do?</h3>
+            <p>The bot has two commands: messenger and survey.</p>
+            <p>- sending a message starting with 'messenger', then the name of a world followed by a message, the bot will walk to the given world and deliver the message there. Try: 'messenger Grassworld Don't fall in the water!'</p>
+            <p>- sending a message starting with 'survey', a question and the possible answers, all separated from each other using a semicolon, will make the bot take a survey and send the results in the chat. Try: 'survey ; Which professor is cooler? ; Dirk Nuyens ; Bart Jacobs ; equally as cool' . </p>
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+            
+        </div>
+      
+    </div>
+
+    <!-- modal for leaderboard display -->
+    <div id="scores" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="text-align: center;">
+            <h2 style="text-align: center;">LEADERBOARD</h2>
+            <span id="closeleaderboard" class="close">&times;</span>
+
+            
+            <br><br>
+            <h3 style="text-align: left; margin-left: 25px;">Compare your score with other players!</h3>
+            <p></p>
+            <br><br>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>RPS</th>
+                    <th>TTT</th>
+                    <th>CTF</th>
+                    <th>TOTAL</th>
+                    <th>Rang</th>
+                </tr>
+            </thead>
+
+            <tbody id="dataScores"></tbody>
+
+            </table>
+
+            
+        </div>
+      
+    </div>
+
+
+    <!-- modal for achievement display -->
+    <div id="coins" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="text-align: center;">
+            <h2 style="text-align: left;">Achievements</h2>
+            <span id="closeCoins" class="close">&times;</span>
+
+            <!-- In beginning all images are locked -->
+
+            <!-- GrassWorld -->
+            <image src="./settings/achievements/locked.png" id="GrassWorldcoin" class="achievement"></image>
+            <!-- IceWorld -->
+            <image src="./settings/achievements/locked.png" id="IceWorldcoin" class="achievement"></image>
+            <!-- LavaWorld -->
+            <image src="./settings/achievements/locked.png" id="LavaWorldcoin" class="achievement"></image>
+            <!-- DesertWorld -->
+            <image src="./settings/achievements/locked.png" id="DesertWorldcoin" class="achievement"></image>
+            <!-- OceanWorld -->
+            <image src="./settings/achievements/locked.png" id="OceanWorldcoin" class="achievement"></image>
+            <!-- HillsWorld -->
+            <image src="./settings/achievements/locked.png" id="HillsWorldcoin" class="achievement"></image>
+            <!-- PsychedelicWorld -->
+            <image src="./settings/achievements/locked.png" id="PsychedelicWorldcoin" class="achievement"></image>
+            <!-- CaveWorld -->
+            <image src="./settings/achievements/locked.png" id="CaveWorldcoin" class="achievement"></image>
+
+            <br><br>
+            <h2 style="text-align: left;">Rewards</h2>
+
+            <!-- 2 skin rewards on completing half and all coins -->
+
+            <!-- At 4 coins -->
+            <image src="./settings/achievements/locked.png" id="firstCoinReward" class="achievement"></image>
+            <!-- At 8 coins -->
+            <image src="./settings/achievements/locked.png" id="secondCoinReward" class="achievement"></image>
+
+        </div>
+    </div>
+
+
+    <!--Logout screen-->
+    <div  id="logout" class="logout">
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <div class="center">
+            <h3>You are not logged out yet, are you sure?</h3>
+            <h3>If you like to logout, press the logout button, else press the reconnect button.</h3>
+            
+            <input id="returnToLogin" hidden="hidden" />
+            <table>
+                <tr>
+                    <td><button type="button" class="linkToLogin" id="lobbyLink">Logout</button></td>
+                    <td><button type="button" class="linkToLogin" id="reconnect">Reconnect</button></td>
+                </tr>
+            </table>
+            
+        </div>
+    </div>
+
+    <!--Logout screen-->
+    <div  id="died" class="died">
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <div class="center">
+            <h3>Oh no ...</h3>
+            <h3> </h3>
+            <h1>YOU DIED!</h1>
+            <h3 id=deathReason>  </h3>
+            <h3> </h3>
+            <h3>If you like to return to your current world, press the 'return to world' button. If not press the 'return to lobby' button.</h3>
+            
+            <input id="returnToLobby" hidden="hidden" />
+            <input id="returnToWorld" hidden="hidden" />
+
+            <table>
+                <tr>
+                    <td><button type="button" class="linkToLobby" id="ReturnTolobbyLink">Return to lobby</button></td>
+                    <td><button type="button" class="linkToLobby" id="ReturnToWorldLink">Return to current world</button></td>
+                </tr>
+            </table>
+            
+        </div>
+    </div>
+
+
+
+
+
+    <script src='./main.js'></script>
+
+</body>
+</html>
